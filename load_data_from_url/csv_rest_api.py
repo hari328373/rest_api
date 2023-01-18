@@ -9,20 +9,16 @@ def Api_data(url):
     json_data = json.loads(response.text)
     return json_data
 
-# COMMAND ----------
 
 url =f"https://retoolapi.dev/CaRLc9/data"
 
 data = Api_data(url)
-
-# COMMAND ----------
 
 df = spark.createDataFrame(data)
 display(df)
 
 df.printSchema()
 
-# COMMAND ----------
 
 # define Schema
 from pyspark.sql.types import StructType,StructField,StringType,LongType
@@ -35,5 +31,4 @@ rootschema = StructType([
     StructField("sepalwidth",StringType(),True),
 ])
 
-# COMMAND ----------
 
